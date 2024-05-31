@@ -723,8 +723,7 @@ lws_klog_dump(const SSL *ssl, const char *line)
 	if (!wsi || !wsi->a.context->keylog_file[0] || !wsi->a.vhost)
 		return;
 
-	lws_snprintf(path, sizeof(path), "%s.%s", wsi->a.context->keylog_file,
-			wsi->a.vhost->name);
+	lws_snprintf(path, sizeof(path), "%s", wsi->a.context->keylog_file);
 
 	fd = open(path, O_CREAT | O_RDWR | O_APPEND, 0600);
 	if (fd == -1) {
